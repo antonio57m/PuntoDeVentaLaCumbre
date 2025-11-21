@@ -2,11 +2,15 @@ package com.pdv.lacumbre.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Clientes")
@@ -43,5 +47,19 @@ public class ClienteEntity {
     @Size(max = 1000, message = "La dirección es demasiado larga")
     @Column(name = "direccion", columnDefinition = "TEXT")
     private String direccion;
+
+    @NotNull
+    @Column(name = "tiene_credito", nullable = false)
+    @Builder.Default
+    private Boolean tieneCredito = false;
+
+
+    @PositiveOrZero(message = "El limite de credito no puede ser negativo")
+    @Column(name = "limite_credito", precision = 10, scale = 2)
+    private BigDecimal limiteCredito = BigDecimal.ZERO;
+
+    @PositiveOrZero(message = "El saldo actual no puede ser negativo")
+    @Column(name = "saldo_actual", precision = 10, scale = 2)
+    private BigDecimal saldoActual = BigDecimal.ZERO;
 
 }
