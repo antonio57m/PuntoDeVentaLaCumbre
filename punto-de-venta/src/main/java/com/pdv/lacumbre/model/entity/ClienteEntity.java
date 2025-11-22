@@ -56,10 +56,12 @@ public class ClienteEntity {
 
     @PositiveOrZero(message = "El limite de credito no puede ser negativo")
     @Column(name = "limite_credito", precision = 10, scale = 2)
+    @Builder.Default
     private BigDecimal limiteCredito = BigDecimal.ZERO;
 
     @PositiveOrZero(message = "El saldo actual no puede ser negativo")
     @Column(name = "saldo_actual", precision = 10, scale = 2)
+    @Builder.Default
     private BigDecimal saldoActual = BigDecimal.ZERO;
 
 }
