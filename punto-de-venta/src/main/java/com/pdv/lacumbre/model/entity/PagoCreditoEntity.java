@@ -2,6 +2,7 @@ package com.pdv.lacumbre.model.entity;
 
 
 import com.pdv.lacumbre.model.enums.MetodoPago;
+import com.pdv.lacumbre.model.enums.MetodoPagoAbono;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -47,7 +48,7 @@ public class PagoCreditoEntity {
     @NotNull(message = "El metodo de pago es obligatorio")
     @Enumerated(EnumType.STRING)
     @Column(name = "metodo_pago_abono", nullable = false)
-    private MetodoPago metodoPagoAbono;
+    private MetodoPagoAbono metodoPagoAbono;
 
     @PrePersist
     public void prePersist() {

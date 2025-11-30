@@ -1,6 +1,9 @@
 package com.pdv.lacumbre.service.cliente;
 
 import com.pdv.lacumbre.model.entity.ClienteEntity;
+import com.pdv.lacumbre.model.enums.MetodoPagoAbono;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +16,5 @@ public interface ClienteService {
     ClienteEntity crearCliente(ClienteEntity cliente);
     ClienteEntity actualizarCliente(Long id, ClienteEntity clienteDetalles);
     void eliminarCliente(Long id);
+    void registrarAbono(Long idCliente, BigDecimal monto, MetodoPagoAbono metodoPagoAbono, String usernameCajero);
 }
